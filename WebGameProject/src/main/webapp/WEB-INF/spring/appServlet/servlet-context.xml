@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- Spring MVC Project에서 사용하는 50여가지의 어노테이션을 사용할 수 있도록 해주는 설정 -->
+	<annotation-driven />
+
+	<!-- 변화가 거의 없는 파일들을 저장해두면 캐싱하여 이용할 수 있도록 해주는 설정 
+	 기본은 root(webapp, WebContent) 디렉토리의 resources, 캐싱 시간 설정도 가능-->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Controller에서 forwarding 하는 View 이름을 넘겨주었을 때 실제 사용할 View를 결정하는 설정 -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<!-- bean을 자동생성해주는 root 패키지 설정 클래스 생성시 이 패키지 안에 만드는 것을 권장
+	다른 패키지를 만들었다면 다른 패키지도 추가해주면 됨 -->
+	<context:component-scan base-package="com.naver.insa8029" />
+	
+	
+	
+</beans:beans>
