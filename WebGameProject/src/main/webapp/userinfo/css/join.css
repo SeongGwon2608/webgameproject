@@ -1,0 +1,146 @@
+ul {
+	list-style-type: none;
+}
+ul li {
+	clear: both;
+}
+form {
+	width: 50em;
+	border: 1px solid #666;
+	border-radius: 10px;
+	box-shadow: .2em .2em .5em #999;
+	background-color: #d0e9f6;
+	padding: 1em;
+	overflow: hidden;
+}
+label {
+	display: block;
+	float: left;
+	width: 10em;
+	text-align: right;
+	margin-right: .5em;
+	color: #04699d;
+}
+input.textinput {
+	width: 30em;
+	height: 2em;
+	border: 1px solid #666;
+	margin-bottom: 1em;
+	display: block;
+	float: left;
+}
+input.fileinput {
+	width: 15em;
+	height: 2em;
+	border: 1px solid #666;
+	margin-bottom: 1em;
+	margin-right: 1em;
+	display: block;
+	float: left;
+}
+
+img{
+	width: 7em;
+	height: 7em;
+	border: 1px solid #666;
+	margin-bottom: 1em;
+}
+textarea {
+	display: block;
+	width: 30em;
+	height: 5em;
+	border: 1px solid #666;
+	margin-bottom: 1em;
+	line-height: 1.25;
+	overflow: auto;
+	resize: none;
+}
+
+input.textinput, textarea {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: .875em;
+}
+input[type="submit"], input[type="button"] {
+	display: block;
+	width: 10em;
+	height: 2em;
+	float: left;
+	background: white;
+	font-size: inherit;
+	border: 1px solid #04699d;
+	border-radius: 4px;
+	box-shadow: 2px 2px 3px rgba(0, 0, 0, .5);
+	margin-top: 1em;
+	margin-right: 1em;
+	color: #C00;
+}
+input[type="submit"] {
+	margin-left: 5em;
+}
+div {
+	color: red;
+	clear: both;
+	margin-left:11em;
+	margin-bottom: 1em;
+}
+@media screen and (max-width: 960px) {
+	form {
+		width: 20em;
+		border: 1px solid #666;
+		border-radius: 10px;
+		box-shadow: .2em .2em .5em #999;
+		background-color: #d0e9f6;
+		padding: 1em;
+		overflow: hidden;
+	}
+	label {
+		display: block;
+		float: left;
+		width: 4em;
+		text-align: right;
+		margin-right: .5em;
+		color: #04699d;
+	}
+	input.textinput {
+		width: 13em;
+		height: 2em;
+		border: 1px solid #666;
+		margin-bottom: 1em;
+	}
+	img{
+		width: 7em;
+		height: 7em;
+		border: 1px solid #666;
+		margin-bottom: 1em;
+		margin-left:5em;
+	}
+	textarea {
+		display: block;
+		width: 13em;
+		height: 5em;
+		border: 1px solid #666;
+		margin-bottom: 1em;
+		line-height: 1.25;
+		overflow: auto;
+		resize: none;
+	}
+	input.textinput, textarea {
+		font-family: Georgia, "Times New Roman", Times, serif;
+		font-size: .875em;
+	}
+		input[type="submit"], input[type="button"] {
+		display: block;
+		width: 10em;
+		height: 2em;
+		float: left;
+		background: white;
+		font-size: inherit;
+		border: 1px solid #04699d;
+		border-radius: 4px;
+		box-shadow: 2px 2px 3px rgba(0, 0, 0, .5);
+		margin-top: 1em;
+		color: #C00;
+		margin-left: 3em;
+	}
+}
+	

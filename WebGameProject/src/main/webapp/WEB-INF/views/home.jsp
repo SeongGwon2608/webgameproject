@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인 페이지</title>
+<title>포트폴리오</title>
 </head>
 <body>
-${item}
+	<li><a href="user/join">회원가입</a><br/></li>
+	<li><a href="user/login" class="menu">로그인</a></li>
 </body>
 </html>

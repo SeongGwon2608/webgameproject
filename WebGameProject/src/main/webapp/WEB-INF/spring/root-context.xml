@@ -5,9 +5,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-	<!-- 모든곳에서 사용할 Bean을 생성 -->
-	<!-- 데이터 베이스 접속 정보를 저장하는 bean을 생성 데이터베이스 종류별로 설정 -->
-	<!-- 오라클 사용
+	<!-- 모든곳에서 사용할 Bean을 생성 데이터 베이스 접속 정보를 저장하는 bean을 생성 데이터베이스 종류별로 설정 -->
+	<!-- 오라클 사용 -->
+	<!-- 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName">
@@ -23,8 +23,9 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 			<value>user08</value>
 		</property>
 	</bean>
-	 -->
+	  -->
 	 
+	 <!-- MsSQL 사용 -->
 	 <bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName">
@@ -41,52 +42,26 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 			<value>900826</value>
 		</property>
 	</bean>
-
-	<!-- XML을 이용한 MyBatis 사용 설정 -->
-	<bean id="sqlSessionFactory"
-	class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<!-- mappers 디렉토리 안에 있는 모든 xml을 mapper 로 사용
-		다른 용도의 xml 파일이 있으면 에러 -->
-		<property name="mapperLocations"
-			value="classpath:mappers/**/*.xml" />
-	</bean>
 	
-	<!-- xml을 이용해서 MyBatis를 사용할 때 생성 -->
-	<bean id="sqlSession"
-	class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg index="0" ref="sqlSessionFactory" />
-	</bean>
-	
-	<!-- 인터페이스를 이용해서 MyBatis를 이용할 때 생성 -->
-	<bean id="goodMapper"
-	class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="sqlSessionFactory"
-		ref="sqlSessionFactory" />
-		<property name="mapperInterface"
-		value="kr.co.pk.item.dao.ItemMapper" />
-	</bean>
-	
-	<!-- 하이버네이트 설정 -->
-	<bean id="sessionFactory"
-	class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		
+		<!-- MyBatis 설정 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="mappingResources">
-			<list>
-				<value>kr/co/pk/item/dao/item.hbm.xml</value>
-			</list>
-		</property>
-		<property name="hibernateProperties">
-				<value>hibernate.dialect=org.hibernate.dialect.MySQLDialect</value>
-		</property>
+		<property name="mapperLocations"
+		value="classpath:mappers/**/*.xml" />
+	</bean>
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory"/>
 	</bean>
 	
-	<tx:annotation-driven/>
-	
-	<bean id="transactionManager"
-	class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
-	
+	<!-- 트랜잭션 사용을 위한 부분 -->
+	<bean id="transactionManager" 
+	class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>	
+	<tx:annotation-driven
+	 transaction-manager="transactionManager" />
+ 
+
 </beans>
 

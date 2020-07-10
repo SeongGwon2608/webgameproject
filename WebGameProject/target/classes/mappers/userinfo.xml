@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userinfo">
+	<select id="emailcheck" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		select email
+		from userinfo
+		where email = #{email}
+	</select>
+
+	<select id="nicknamecheck" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		select nickname
+		from userinfo
+		where nickname = #{nickname}
+	</select>
+<!-- 
+	<insert id="join" parameterType="com.naver.insa8029.domain.UserInfo">
+		insert into userinfo(email, userpw, nickname)
+		values(#{email}, #{userpw}, #{nickname})
+	</insert>
+ -->
+</mapper>
